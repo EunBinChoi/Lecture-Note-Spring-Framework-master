@@ -1,0 +1,38 @@
+[ 스프링 프로젝트 구조 ]
+
+legacy project 생성
+- project name
+- package name (3계층)
+ex) me.spring.overview
+me.spring: groupId 
+(프로젝트 생성한 조직 이름)
+overview: artifactId
+(프로젝트 빌드시 파일 이름)
+(context root)
+(localhost:8000/artifactId/
+
+- project name
+	- src/main/java: java 파일 
+	- src/main/resources
+	- src/test/java
+	- src/test/resources
+	- src
+		- main
+			- webapp
+				- resources
+				- WEB-INF
+					- classes
+					- spring
+						- appServlet
+							- servlet-context.xml
+							: 웹과 관련된 스프링 설정 파일
+						- root-context.xml
+						: 스프링 설정 파일
+					- views : jsp (외부에서 직접 호출 불가)
+						- *.jsp
+					- web.xml : tomcat의 웹 설정 파일
+	- target
+	- pom.xml: Maven project 설정 파일 
+	(dependency 설정 쉬움 => jar 파일을 직접 다운로드 받지 않아도 됨)
+
+

@@ -1,0 +1,49 @@
+[ 로그 (log) ]
+
+: 기록을 남기는 것
+: 프로그램 개발이나 운영시 발생하는 문제점 추적
+: 로그를 남기면 전체 프로그램 성능 저하 (File IO)
+: System.out.print 대신해서 slf4j을 사용
+
+[ slf4j ]
+: interface
+: log4j, logback implements slf4j
+: slf4j를 이용해서 통합 관리
+
+[ 로그 레벨 ]
+Fatal > Error > Warn > Info > Debug > Trace
+ex) info라고 지정하면 info 이상의 로그 추적
+    >> info, warn, error, fatal
+    
+[ 로그 구성 요소 ]
+- logger: 실제 로그를 출력하는 역할
+- appender: 어디에 로그를 출력할지 결정
+	- FileAppender: 파일에 로그 메시지를 출력
+	- ConsoleAppender: 콘솔에 로그 메시지를 출력
+	- RollingFileAppender: 지정한 파일 용량이 넘어가면 새로운 로그 파일 만들어서 출력
+	- DailyRollingFileAppender: 하루 단위로 로그 메시지를 출력
+- root: root logger
+	- logger를 찾을 수 없을 때
+- layout: 로그를 어떤 형식으로 출력할지 결정
+	: %d: 로그의 기록 시간 출력 (*)
+	: %p: 로깅 레벨 출력 (*)
+	: %F: 로깅이 발생한 프로그램 파일명 출력
+	: %M: 로깅이 발생한 메소드 이름 출력
+	: %I: 로깅이 발생한 호출지의 정보 출력
+	: %L: 로깅이 발생한 호출지의 라인수 출력
+	: %t: 로깅이 발생한 Thread명 출력
+	: %c: 로깅이 발생한 카테고리 출력
+	: %C: 로깅이 발생한 클래스명 출력 (*)
+	: %m: 로그 메시지 출력 (*)
+	: %n: 개행 문자 출력
+	: %%: %를 출력
+	: %r: 어플리케이션 시작 이후로부터 로깅 발생한 시점까지의 시간 (ms) 출력
+- param: 파라미터 지정
+- level: 로그 레벨 지정
+
+
+[ log4j 취약점 ]
+- JNDI (Java Naming and Directory Interface)
+	: Java 프로그램이 디렉토리를 통해 객체 이름을 찾을 수 있는 서비스
+- 해커들은 JNDI를 이용해서 특정 객체를 찾아내고 그 객체 안의 사용자 데이터를 취득 해킹문제
+

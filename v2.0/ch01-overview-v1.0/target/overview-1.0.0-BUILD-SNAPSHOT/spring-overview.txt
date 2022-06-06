@@ -1,0 +1,16 @@
+[ 스프링 개요 ]
+
+- Spring (봄): 웹 개발하기 위한 프레임워크
+    - 이미 프레임이 짜여있기 때문에 (.xml)
+      controller, service, dao, java bean (entity, dto, vo)만 개발
+	- 만든 이유: 프로젝트의 유지보수, 품질 보장
+	
+- 특징
+	1) POJO (Plain Old Java Object) 기반
+		- 스프링에서 객체 구현할 때 별도의 API 사용하지 않고 일반 자바 코드로 구현
+		- 특정 프레임워크에 종속된 무거운 객체를 만듦에 반발하기 위해 사용한 언어
+		- 마틴 파울러
+	2) IoC (Inversion of Control, 제어의 역전)
+		- 객체 생성/소멸은 개발자에게 제어권이 없고
+		  IoC 컨테이너 (ApplicationContext)에게 제어권이 있음
+		- IoC 컨테이너는 객체를 싱글톤 패턴 (객체를 오직 하나)으로 만들어서 사용

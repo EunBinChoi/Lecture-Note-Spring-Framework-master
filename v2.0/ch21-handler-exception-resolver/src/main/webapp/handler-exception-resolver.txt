@@ -1,0 +1,30 @@
+[ Handler Exception Resolver ]
+
+
+스프링 전략
+1) AnnotationMethodHandlerExceptionResolver => @ExceptionHandler (스프링의 디폴트 전략)
+	- 클라이언트에게 에러 페이지 (controller에서 error handling 되지 못하고 뷰에 보여주는 페이지) 보여주지 않음
+	- view 변경
+	- view 단에 전달되는 데이터 변경해서 alert()
+	- (*) 특정 controller에서 발생하는 error는 동일 클래스 내에서 handling을 해줘야 함 (@ExceptionHandler)
+	- ex) RegisterController <--- (상속) --- RegisterControllerHandler
+	- cf) Spring 3.2 이상부터는 @ControllerAdvice (전역 예외 처리기)
+	
+2) ResponseStatusExceptionResolver => @ResponseStatus (스프링의 디폴트 전략)
+	- 클라이언트에게 에러 페이지 (controller에서 error handling 되지 못하고 뷰에 보여주는 페이지) 보여줌
+	- 단순한 500 에러 대신에 우리가 원하는 HttpStatus로 응답하도록 변경
+	
+3) DefaultHandlerExceptionResolver (스프링의 디폴트 전략)
+	- 스프링에서 발생하는 주요 예외를 처리하는 표준 예외 처리기 (400, 404, 500)
+	- Request URL에 맞는 Controller를 찾지 못하는 경우 => 404 Not Found
+	- Controller의 파라미터 형식/타입이 잘못된 경우 => 400 Bad Request
+	- Controller 실행 중 서버에서 오류가 나는 경우 => 500 Internal Server Error
+	- 스프링 내부에서 발생하는 예외를 처리하기 위한 용도이므로 우리가 신경쓸 필요 X
+
+4) SimpleMappingExceptionResolver
+	- web.xml에 error-page를 작성하듯이 특정 예외를 처리할 뷰를 매핑
+	- 모든 컨트롤러에서 발생하는 예외를 모두 적용할 수 있음
+	- 디폴트 전략이 아니므로 빈을 등록을 해줘야 함
+
+사용자가 정의한 Exception이 있다고 가정
+throw new CustomException() => 500 (단순한 500말고 특정 다른 값으로 status 변경할 수 있음)

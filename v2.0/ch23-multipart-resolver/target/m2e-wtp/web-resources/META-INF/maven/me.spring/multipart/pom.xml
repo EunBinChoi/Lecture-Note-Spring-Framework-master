@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<!--POM model의 버전-->
+	<modelVersion>4.0.0</modelVersion>
+	
+	<!--프로젝트를 생성하는 조직의 고유 아이디를 결정함 
+		일반적으로 도메인의 이름을 거꾸로 적음 -->
+	<groupId>me.spring</groupId>
+	
+	<!-- 프로젝트 빌드 시 파일의 대표 이름 
+		groupId내에서 유일해야 함 
+    	Maven을 이용하여 빌드 시 다음과 같은 파일이 생성됨 
+    -->
+	<artifactId>multipart</artifactId>
+	
+	<!-- 프로젝트 이름 -->
+	<name>ch43-multipart-resolver</name>
+	
+	<!--  패키징 유형 (jar (java archive), war (web archive), ear 등) 
+		※ J2EE 애플리케이션에서 모듈은 기능에 따라 EAR, JAR 및 WAR로 패키지됩니다. 
+
+ 
+		1. JAR (java archive)
+		: 엔터프라이즈 Java Bean (클래스 파일) 및 EJB 배치 디스크립터를 포함하는 EJB 모듈은 .jar 확장을 갖는 JAR 파일로 압축됩니다. 
+		 
+		2. WAR (web archive)
+		: 서블릿 클래스 파일, JSP 파일, 지원 파일, GIF 및 HTML 파일을 포함하는 웹 모듈은 확장자가 .war (웹 아카이브) 인 JAR 파일로 패키지됩니다. 
+	 
+		3. EAR (enterprise archive)
+		: 위의 모든 파일 (.jar 및 .war)은 확장자가 .ear (enterprise archive) 인 JAR 파일로 패키지되어 Application Server에 배치됩니다.
+ 
+		4. JAR, WAR, EAR 차이점
+		JAR, WAR, EAR 파일의 가장 큰 차이점은 서로 다른 환경을 대상으로한다는 점입니다. 
+		EAR 파일을 실행하려면 완전한 Java EE (Java Platform, Enterprise Edition) 또는 WebSphere 또는 JBoss와 같은 Jakarta Enterprise Edition (EE) 호환 애플리케이션 서버가 필요합니다. 
+		WAR 파일은 Java EE Web Profile 호환 응용 프로그램 서버 만 실행하면되고 JAR 파일은 Java 설치 만 필요합니다.
+		
+		JAR, WAR, EAR 파일에 적용되는 내부 제한 사항 및 요구 사항도 있습니다. 
+		EAR 파일 자체에는 META-INF라는 폴더에 application.xml 파일이 있어야합니다. 
+		WAR 파일에는 WEB-INF 폴더에 포함 된 web.xml 파일이 필요합니다. 
+		Java 파일에는 이러한 요구 사항이 없습니다.
+		
+ 		Spring Boot 및 Eclipse MicroProfile과 같은 최신 마이크로 서비스 프레임 워크는 
+		Docker와 같은 소프트웨어 컨테이너 및 RedHat OpenShift와 같은 컨테이너 오케스트레이션 도구에 
+		직접 배치 할 수있는 실행 가능한 JAR 파일로 애플리케이션을 배치합니다.
+	-->
+	
+	<!-- 패키징 유형 (jar (java archive), war (web archive), ear 등) -->
+	<packaging>war</packaging>
+	
+	<!-- 프로젝트의 현재 버전, 프로젝트 개발 중일 때는 SNAPSHOT을 접미사로 사용 -->
+	<version>1.0.0-BUILD-SNAPSHOT</version>
+	
+	<!-- 버전관리시 용이함 
+	ex) properties에서 자바 버전을 선언 하고 dependencies에서 다음과 같이 활용 가능함 
+	<version>${java.version}</version>  
+	-->
+	<properties>
+		<java-version>11</java-version>
+		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+		<jboss.validation.version>4.2.0.Final</jboss.validation.version>
+		<javax.servlet.version>3.1.0</javax.servlet.version>
+		<junit.version>4.13</junit.version>
+		<org.hamcrest.version>1.1</org.hamcrest.version>
+		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<com.fasterxml.jason.core-version>2.0.4</com.fasterxml.jason.core-version>
+		<com.codehaus.jackson-version>1.9.13</com.codehaus.jackson-version>
+		<maven.compiler.source>11.0.13</maven.compiler.source>
+		<maven.compiler.target>11.0.13</maven.compiler.target>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
+	</properties>
+	
+	<!-- oracle repository를 가지고 옴 (maven과 oracle license가 달라서 maven repository가 없음!) -->
+	<repositories>
+        <repository>
+            <id>oracle</id>
+            <name>ORACLE JDBC Repository</name>
+            <url>http://maven.jahia.org/maven2</url>
+        </repository>
+    </repositories>
+    
+	<!--dependencies 태그 안에는 프로젝트와 의존 관계에 있는 라이브러리들을 관리함 -->
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>	
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				 </exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+				
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>	
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mail</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+			</exclusions>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+				
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+	
+		<!-- javax.annotation -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		
+		<!-- @Configuration -->
+		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>2.2.2</version>
+		</dependency> 
+		
+		<!-- @Valid -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>${jboss.validation.version}</version>
+		</dependency>
+
+		<!-- @Valid -->
+		<!-- API, java.xml.bind module -->
+		<dependency>
+		    <groupId>jakarta.xml.bind</groupId>
+		    <artifactId>jakarta.xml.bind-api</artifactId>
+		    <version>2.3.2</version>
+		</dependency>
+		 
+		<!-- @Valid -->
+		<!-- Runtime, com.sun.xml.bind module -->
+		<dependency>
+		    <groupId>org.glassfish.jaxb</groupId>
+		    <artifactId>jaxb-runtime</artifactId>
+		    <version>2.3.2</version>
+		</dependency>
+		
+		<!-- XML Converters -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-oxm -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-oxm</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		
+		<!-- JSON Object, JSON Array -->
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		
+		<!-- JSON 방식으로 통신 ( MappingJacksonHttpMessageConverter) -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${com.fasterxml.jason.core-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${com.fasterxml.jason.core-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${com.fasterxml.jason.core-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${com.codehaus.jackson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>${com.codehaus.jackson-version}</version>
+		</dependency>
+		
+		<!--  Commons Multipart Resolver -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.2.1</version>
+		</dependency>  
+		
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		
+		<!-- cos.jar -->
+		<!-- FileRenamePolicy (서버에 중복된 파일 이름이 있을 경우를 대비) -->
+		<dependency>
+          <groupId>servlets.com</groupId>
+          <artifactId>cos</artifactId>
+          <version>05Nov2002</version>
+      	</dependency> 
+		
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Spring Test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- DB -->
+		<!-- com.oracle사의 JDBC -->
+		<dependency>
+	        <groupId>com.oracle</groupId>
+	        <artifactId>ojdbc6</artifactId>
+	        <version>12.1.0.2</version>
+	    </dependency>
+	    
+	    <!-- org.springframework사의 JDBC 추가 -->
+	    <!-- org.springframework.jdbc.datasource.DriverManagerDataSource; -->
+	    <dependency>
+	      <groupId>org.springframework</groupId>
+	      <artifactId>spring-jdbc</artifactId>
+	      <version>${org.springframework-version}</version>
+	    </dependency>
+	    
+	    <!-- com.mchange사의 JDBC, DBCP 추가 -->
+	   	<!-- com.mchange.v2.c3p0.ComboPooledDataSource; -->
+	    <dependency>
+	       <groupId>com.mchange</groupId>
+	       <artifactId>c3p0</artifactId>
+	       <version>0.9.5</version>
+	    </dependency>
+	    
+	    <!-- org.apache사의 DBCP 추가 -->
+	    <!-- org.apache.commons.dbcp.BasicDataSource; -->
+	    <dependency>
+	    	<groupId>commons-dbcp</groupId>
+	    	<artifactId>commons-dbcp</artifactId>
+	    	<version>1.3</version>
+	    </dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		    <version>2.7.9</version>
+		</dependency>
+		        
+	</dependencies>
+	
+	<!-- 빌드에 사용할 플러그인 목록 -->
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <additionalProjectnatures>
+                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+                    </additionalProjectnatures>
+                    <additionalBuildcommands>
+                        <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+                    </additionalBuildcommands>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>true</downloadJavadocs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <plugin>
+		    	<groupId>org.apache.maven.plugins</groupId>
+		        	<artifactId>maven-war-plugin</artifactId>
+		            <version>3.2.3</version>
+		            <configuration>
+		            	<failOnMissingWebXml>false</failOnMissingWebXml>
+		            </configuration>
+		    </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <mainClass>org.test.int1.Main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,47 @@
+< 파일 업로드 >
+- 웹 브라우저를 통해 파일 전송하기 위한 폼 (form) 태그 속성 중 input 태그 존재
+
+<input type="file"> 파일을 선택할 수 있는 창 호출
+파일 전송하기 위해 method, enctype="multipart/form-data" 줘야 함
+
+enctype 속성
+1) application/x-www-form-urlencoded: 기본값, 모든 문자들은 서버로 보내기 전에 인코딩됨
+2) multipart/form-data: 모든 문자를 인코딩하지 않음 명시 (파일이나 이미지 (용량이 큰)를 서버로 전송할 때 사용)
+	>> https://kyoe.tistory.com/103
+	>> https://junghyun100.github.io/Multipart_form-data/
+	>> 사진 설명 application/x-www-form-urlencoded
+	>> 사진 파일 image/jpeg
+	>> 하나의 Body에서 2개의 종류 데이터를 구분해서 넣어주기 위함
+	
+3) text/plain: 공백 문자 (space)는 +로 변함, 다른 문자는 인코딩되지 않음을 명시
+(사용 안함)
+
+>> 서버상 한 폴더에 업로드하기 위해서 컴포넌트 필요함 (www.servlets.com, cos.jar)
+>> MultipartRequest 클래스
+>> http://www.servlets.com/cos/javadoc/com/oreilly/servlet/MultipartRequest.html
+
+>> 생성자: MultipartRequest(javax.servlet.http.HttpServletRequest request, 
+java.lang.String saveDirectory, int maxPostSize, java.lang.String encoding, FileRenamePolicy policy)
+	: policy: 업로드될 파일명이 기존 업로드 파일명과 같은 경우 덮어쓰기 방지를 위해 설정
+
+>> 메소드
+ java.lang.String	getContentType(java.lang.String name)
+	 : 업로드된 파일의 컨텐트 타입 반환하고 업로드된 파일이 없으면 null 반환
+ java.io.File	getFile(java.lang.String name)
+ 	: 서버 상에 업로드된 파일 객체를 반환하고 업로드된 파일이 없으면 null 반환
+ java.util.Enumeration	getFileNames()
+	 : 폼 태그 요소 중 input 태그 속성이 file로 된 파라미터의 이름들을 반환하고 업로드된 파일이 없으면 비어있는 Enumeration 객체 반환
+ java.lang.String	getFilesystemName(java.lang.String name)
+ 	: 사용자가 지정해서 서버에 실제로 업로드된 파일명 반환
+ 	: 중복된 파일명이 있을 경우 FileRenamePolicy에 의해 변경된 이름 반환
+ java.lang.String	getOriginalFileName(java.lang.String name)
+ 	: 사용자가 지정해서 서버에 업로드된 파일명을 반환하고 이때 파일명은 파일 중복을 고려한 파일명 변경 전의 이름 반환
+ 	: 중복된 파일명이 변경되기 전의 파일 이름 반환 (FileRenamePolicy 전의 파일 이름 반환)
+ 	: 중복될 경우 파일명 뒤에 filename1, filename2가 붙음
+ java.lang.String	getParameter(java.lang.String name)
+	 : 스트링으로 주어진 이름에 대한 값을 반환하고 값 없이 파리미터가 전송되었거나 해당되는 이름의 파라미터가 전송이 안 되었을 경우 null 반환
+ java.util.Enumeration	getParameterNames()
+	 : 모든 파라미터의 이름을 Enumeration 객체로 반환
+ java.lang.String[]	getParameterValues(java.lang.String name)
+	 : 주어진 이름에 대한 값을 스트링 배열로 반환하고 파라미터가 전송되지 않았을 때는 null 반환
+ 

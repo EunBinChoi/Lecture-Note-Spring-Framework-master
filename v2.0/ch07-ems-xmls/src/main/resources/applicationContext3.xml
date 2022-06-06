@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- StudentContainer 대신에 Spring Container 작성 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- xml 등록 순서와 객체 생성 순서는 상관 없음 
+		
+		xml -> load -> 의존관계 트리 생성 (**) -> 해석 -> (트리의 아래에서부터) Bean Definition -> Bean Factory
+	-->
+	
+	<bean id="studentDao" class="me.java.ems.dao.StudentDao"></bean>
+	<bean id="selectAllService" class="me.java.ems.service.StudentSelectAllService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+	<bean id="selectService"    class="me.java.ems.service.StudentSelectService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+	<bean id="registerService"  class="me.java.ems.service.StudentRegisterService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+	<bean id="modifyService"    class="me.java.ems.service.StudentModifyService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+	<bean id="deleteService"    class="me.java.ems.service.StudentDeleteService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+</beans>

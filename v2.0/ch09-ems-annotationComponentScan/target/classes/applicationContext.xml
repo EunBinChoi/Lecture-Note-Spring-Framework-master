@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- StudentContainer 대신에 Spring Container 작성 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- xml 등록 순서와 객체 생성 순서는 상관 없음 
+		
+		xml -> load -> 의존관계 트리 생성 (**) -> 해석 -> (트리의 아래에서부터) Bean Definition -> Bean Factory
+	-->
+	<bean id="emsInformation" class="me.java.ems.info.EMSInformation">
+		<property name="info">
+			<value>Education Management System program was developed in 2022.</value>
+		</property>
+		<property name="copyRight" value="COPYRIGHT(C) 2022 EMS CO., LTD. ALL RIGHT RESERVED. CONTACT MASTER FOR MORE INFORMATION."></property>
+		<property name="ver" value="The version is 1.0"></property>
+		<property name="sYear"  value="2022"></property>
+		<property name="sMonth" value="1"></property>
+		<property name="sDay"   value="1"></property>
+		<property name="eYear"  value="2022"></property>
+		<property name="eMonth" value="2"></property>
+		<property name="eDay"   value="28"></property>
+		<property name="developers">
+			<list>
+				<value>Sally.</value>
+				<value>Eloy.</value>
+				<value>Jasper.</value>
+				<value>Dillon.</value>
+				<value>Kian.</value>
+			</list>
+		</property>
+		<property name="administrators">
+			<map>
+				<entry>
+					<key><value>Sally</value></key>
+					<value>sally@springPjt.org</value>
+				</entry>
+				<entry>
+					<key><value>Jasper</value></key>
+					<value>jasper@springPjt.org</value>
+				</entry>
+			</map>
+		</property>
+		<property name="dbInfos">
+			<map>
+				<entry>
+					<key><value>dev</value></key>
+					<ref bean="dataBaseConnectionInfoDev"></ref>
+				</entry>
+				<entry>
+					<key><value>real</value></key>
+					<ref bean="dataBaseConnectionInfoReal"></ref>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- new DataBaseConnectionInfo("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger") -->
+	<bean id="dataBaseConnectionInfoDev" class="me.java.ems.database.DataBaseConnectionInfo">
+		<constructor-arg value="oracle.jdbc.driver.OracleDriver"></constructor-arg>
+		<constructor-arg value="jdbc:oracle:thin:@localhost:1521:xe"></constructor-arg>
+		<constructor-arg value="scott"></constructor-arg>
+		<constructor-arg value="tiger"></constructor-arg>
+	</bean>	
+	
+	<!-- new DataBaseConnectionInfo("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:@192.168.0.1:1521:xe", "masterid", "masterpw") -->
+	<bean id="dataBaseConnectionInfoReal" class="me.java.ems.database.DataBaseConnectionInfo">
+		<constructor-arg value="oracle.jdbc.driver.OracleDriver"></constructor-arg>
+		<constructor-arg value="jdbc:oracle:thin:@192.168.0.1:1521:xe"></constructor-arg>
+		<constructor-arg value="masterid"></constructor-arg>
+		<constructor-arg value="masterpw"></constructor-arg>
+	</bean>
+	
+	
+	<bean id="studentDao" class="me.java.ems.dao.StudentDao"></bean>
+	<bean id="selectAllService" class="me.java.ems.service.StudentSelectAllService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+	<bean id="selectService"    class="me.java.ems.service.StudentSelectService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+	<bean id="registerService"  class="me.java.ems.service.StudentRegisterService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+	<bean id="modifyService"    class="me.java.ems.service.StudentModifyService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+	<bean id="deleteService"    class="me.java.ems.service.StudentDeleteService">
+		<constructor-arg ref="studentDao"></constructor-arg>
+	</bean>
+</beans>

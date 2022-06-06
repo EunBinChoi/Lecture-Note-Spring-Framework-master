@@ -1,0 +1,50 @@
+[ 스프링 모델 ]
+- MVC 패턴 채택
+- cf) OOP 패턴, 디자인 패턴 (싱글톤, 빌더, 팩토리, MVC)
+
+1) Model1
+- Client -- JSP (+ DB 연결, 데이터 저장) -- DB
+* 하나의 JSP 파일 안에서 DB 연결 (-Mgr), 데이터 저장
+* 자바 코드 <% %>랑 html이랑 혼재
+
+2) Model2 == MVC (model-view-controller)
+* model (-Mgr (DAO) -> Java Bean)
+* controller (servlet)
+* view (.jsp)
+
+.jsp (view) -> servlet (controller) -> mgr (model) -> DB
+
+
+[ MVC 구조를 채택한 Spring 구조 ]
+cf) https://velog.io/@gillog/Spring-MVC-%EA%B5%AC%EC%A1%B0
+- 구성 요소
+	- DispatcherServlet (**): 중간 관리자 역할
+	 : Client의 request에 맞게 컨트롤러가 실행한 결과를 View 전달해서 응답 생성
+	 : ex) localhost:8000/overview/
+	- HandlerMapping
+	 : Client의 request URL을 확인해서 컨트롤러 결정
+	- Controller
+	 : Client의 request을 처리해서 DispatcherServlet에게 리턴
+	 : ex) home() (RequestMapping="/")
+	- ModelAndView / Model
+	 : Controller가 처리한 결과 Model / View 정보를 담음
+	 : ex) model.addAttribute("serverTime", ...);
+	- ViewResolver
+	 : Controller의 처리 결과를 생성할 뷰 결정
+	 : ex) prefix + home.jsp + suffix
+	- View
+	 : Controller의 처리 결과 화면 생성 (.jsp)
+	 : ex) home.jsp
+
+
+[ Java Bean ]
+presentation (view) layer <-> business layer <-> persistence (DB) layer
+          VO                       DTO                  Entity  
+(*) Entity: DB 구조와 1:1 맵핑 객체
+	ex) Date: 2022-02-25 (Date 타입으로 DB에 저장) => String: "2022-02-25"
+(*) DAO: DB SQL 수행하기 위한 객체 (ex) new dao().select())
+(*) DTO: DB 구조와 거의 비슷하지만 view에 보여주기 위해 변경될 가능성이 있는 객체
+	ex) String: "2022-02-25" => parsing => int: 2022, int: 2, int: 25
+(*) VO: View에 보여지는 객체 (read only, 변경 불가)
+
+

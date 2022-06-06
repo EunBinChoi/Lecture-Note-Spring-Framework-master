@@ -1,0 +1,6 @@
+2022-03-16 10:26:25,174 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error404 raised me.spring.error.exception.NotFoundException: 404
+2022-03-16 10:26:56,428 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error404 raised me.spring.error.exception.NotFoundException: 404
+2022-03-16 10:32:42,944 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error404 raised me.spring.error.exception.NotFoundException: 404
+2022-03-16 11:16:36,640 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-16 11:16:43,245 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error400 raised me.spring.error.exception.BadRequestException: 400
+2022-03-16 11:18:32,617 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error400 raised me.spring.error.exception.BadRequestException: 400

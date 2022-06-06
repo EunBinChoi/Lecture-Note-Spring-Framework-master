@@ -1,0 +1,38 @@
+[ MVC 구조 ]
+
+URL 맵핑
+======================================================
+localhost:8000/mvc-login/       ==> index.jsp
+localhost:8000/mvc-login/login  ==> login.jsp  (GET, POST)
+localhost:8000/mvc-login/update ==> update.jsp (GET, POST)
+localhost:8000/mvc-login/delete ==> delete.jsp (GET, POST)
+localhost:8000/mvc-login/signup ==> signup.jsp (GET, POST)
+
+=======================================================
+1) /로 들어갔는데 로그인하지 않았을 경우에는 /login으로 redirect
+2) 직접 URL을 변경해서 접근하려고 하는 경우 
+3) login 시도 시 ID/PWD가 틀린 경우 /login
+
+
+Model: VO, DTO, Entity (RegisterBean)
+View       -(DTO)-> Controller --> Service --> Dao (Entity) --> DB (Register)
+Controller -(VO)-> View
+
+=======================================================
+유지되고 있는 session 값
+login : login-success,  login-fail, logout, session-end
+signup: signup-success, signup-fail
+update: update-success, update-fail
+delete: delete-success, delete-fail
+idKey : id 
+로그인 되어야만 접근 가능한 페이지: (/, /update, /delete) (만약 idKey가 없으면 예외 발생시키고 redirect)
+로그인 되지 않아도 접근 가능한 페이지: /signup, /login
+=======================================================
+잠깐 유지되고 있는 session 값 (login > signup 갈 때)
+id, pwd
+
+
+=======================================================
+오류
+정상적으로 입력했을 때 modify 안됨 >> 수정 완료
+

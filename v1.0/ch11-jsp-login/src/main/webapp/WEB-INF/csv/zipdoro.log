@@ -1,0 +1,204 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on 화 8월 31 01:44:23 2021
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   ./zipdoro.ctl
+Data File:      ./zipdoro.csv
+  Bad File:     ./zipdoro.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table TBLZIPCODE, loaded from every logical record.
+Insert option in effect for this table: TRUNCATE
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+ZIPCODE                             FIRST     *   ,       CHARACTER            
+ADDRESS                              NEXT     *   ,       CHARACTER            
+
+Record 1: Rejected - Error on table TBLZIPCODE, column ZIPCODE.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ZIPCODE" (actual: 7, maximum: 5)
+
+Record 4791: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 4797: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 4805: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 4827: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 4839: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 4841: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 4842: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 4845: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 4847: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5189: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 55, maximum: 50)
+
+Record 5190: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5205: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 55, maximum: 50)
+
+Record 5206: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5207: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 55, maximum: 50)
+
+Record 5301: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5444: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 55, maximum: 50)
+
+Record 5445: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5446: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 55, maximum: 50)
+
+Record 5447: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5448: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 55, maximum: 50)
+
+Record 5453: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5468: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5483: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5486: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5487: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5488: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5489: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5495: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5496: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5497: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5498: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5504: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5505: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5511: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5514: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5521: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5522: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5523: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5524: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5525: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5537: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5538: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5645: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5647: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5659: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 52, maximum: 50)
+
+Record 5846: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5847: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5860: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5861: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+Record 5868: Rejected - Error on table TBLZIPCODE, column ADDRESS.
+ORA-12899: value too large for column "SCOTT"."TBLZIPCODE"."ADDRESS" (actual: 51, maximum: 50)
+
+
+MAXIMUM ERROR COUNT EXCEEDED - Above statistics reflect partial run.
+
+Table TBLZIPCODE:
+  5817 Rows successfully loaded.
+  51 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                  33024 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:          5888
+Total logical records rejected:        51
+Total logical records discarded:        0
+
+Run began on 화 8월  31 01:44:23 2021
+Run ended on 화 8월  31 01:44:24 2021
+
+Elapsed time was:     00:00:00.21
+CPU time was:         00:00:00.04

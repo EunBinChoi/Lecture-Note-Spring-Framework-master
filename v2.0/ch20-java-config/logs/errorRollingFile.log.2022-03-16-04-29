@@ -1,0 +1,6 @@
+2022-03-16 04:29:07,153 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error500 raised me.spring.error.exception.InternalServerException: exception
+2022-03-16 04:29:10,064 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error500 raised me.spring.error.exception.InternalServerException: exception
+2022-03-16 04:29:12,840 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error500 raised me.spring.error.exception.InternalServerException: exception
+2022-03-16 04:29:15,624 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error500 raised me.spring.error.exception.InternalServerException: exception
+2022-03-16 04:29:21,585 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error500 raised me.spring.error.exception.InternalServerException: exception
+2022-03-16 04:29:22,135 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error500 raised me.spring.error.exception.InternalServerException: exception

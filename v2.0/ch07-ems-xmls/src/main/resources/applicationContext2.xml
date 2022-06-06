@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- StudentContainer 대신에 Spring Container 작성 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- xml 등록 순서와 객체 생성 순서는 상관 없음 
+		
+		xml -> load -> 의존관계 트리 생성 (**) -> 해석 -> (트리의 아래에서부터) Bean Definition -> Bean Factory
+	-->
+	
+	<!-- new DataBaseConnectionInfo("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger") -->
+	<bean id="dataBaseConnectionInfoDev" class="me.java.ems.database.DataBaseConnectionInfo">
+		<constructor-arg value="oracle.jdbc.driver.OracleDriver"></constructor-arg>
+		<constructor-arg value="jdbc:oracle:thin:@localhost:1521:xe"></constructor-arg>
+		<constructor-arg value="scott"></constructor-arg>
+		<constructor-arg value="tiger"></constructor-arg>
+	</bean>	
+	
+	<!-- new DataBaseConnectionInfo("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:@192.168.0.1:1521:xe", "masterid", "masterpw") -->
+	<bean id="dataBaseConnectionInfoReal" class="me.java.ems.database.DataBaseConnectionInfo">
+		<constructor-arg value="oracle.jdbc.driver.OracleDriver"></constructor-arg>
+		<constructor-arg value="jdbc:oracle:thin:@192.168.0.1:1521:xe"></constructor-arg>
+		<constructor-arg value="masterid"></constructor-arg>
+		<constructor-arg value="masterpw"></constructor-arg>
+	</bean>
+	
+	
+</beans>

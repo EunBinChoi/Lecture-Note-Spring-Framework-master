@@ -1,0 +1,14 @@
+2022-03-17 09:35:59,547 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error404 raised me.spring.error.exception.NotFoundException: 404
+2022-03-17 14:42:14,686 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 14:50:21,103 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 14:50:24,063 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 14:55:41,721 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 14:55:43,303 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 14:55:43,821 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 14:57:24,818 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 14:57:25,838 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 14:57:26,740 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 15:24:22,436 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 15:24:52,744 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 15:24:56,961 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500
+2022-03-17 15:27:45,112 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login-ajax/error500 raised me.spring.error.exception.InternalServerException: 500

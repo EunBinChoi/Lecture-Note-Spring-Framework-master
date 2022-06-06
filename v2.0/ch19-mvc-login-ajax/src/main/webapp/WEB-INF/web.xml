@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.1" 
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	https://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">
+
+	
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- 여기에 등록된 설정 파일에 따라 등록된 Bean들은 모두 공유가 가능함 -->
+    <!-- root-context.xml을 정의 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+	
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<!-- ContextLoaderListener --> 
+    <!-- 리스너로써 root-context.xml에 정의 되어있는 것들을 모든 서블릿과 필터가 공유할 수 있게 함 -->
+    <!-- Controller가 공유하는 Bean들을 포함하는 Spring Container를 생성함 -->
+    <!-- 공유하는 Bean: Dao, DataSource, Service --> 
+    <!-- DispatcherServlet에 의해 생성된 Bean은 ContextLoaderListener에 의해 생성된 Bean을 참조할 수 있음--> 
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Processes application requests -->
+	<!-- DisparcherServlet -->
+    <!-- 1. Spring Container를 생성 (Spring Container: Controller의 lifecycle 관리) -->
+    <!-- 2. 클라이언트의 요청을 처음으로 받는 클래스 (Spring에서 제공) -->
+    <!-- 3. 클라이언트의 요청을 Handler (Controller)에 보냄 -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		
+		
+		<!-- contextLoader가 해당 위치의 설정 파일을 읽어 해당 파일을 dispatcher servlet으로 만듦 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+		
+	<!-- /로 시작하는(/뒤에 공백) url 요청을 받아 appServlet에서 처리함 -->
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!-- localhost:8000/context root/ 실행시 forward되는 페이지 -->
+	<welcome-file-list>
+		<welcome-file>/</welcome-file>
+	</welcome-file-list>
+	
+	<!-- trim-directive-whitespace
+		true: 
+		브라우저에서 '소스보기'를 할 경우 스크립트 코드로 인한 공백을 제거 
+		JSP 를 사용하다보면 java이 있던 자리가 servlet로 변경되고 나서 빈줄 (whitespace)로 남아있는 것을 보게 됨
+		크게 문제는 없지만 깔끔해 보이지도 않고 파일의 용량도 늘어나게 되니 없애고 싶을 때 선택할 수 있는 방법!
+	-->
+	<jsp-config>
+  		<jsp-property-group>
+    		<url-pattern>*.jsp</url-pattern>
+    		<trim-directive-whitespaces>true</trim-directive-whitespaces>
+  		</jsp-property-group>
+	</jsp-config>
+	
+	<!-- post 방식으로 전송할 때 한국어가 깨지지 않도록 인코딩  필터 정의하고 맵핑 -->
+	<!-- 필터 정의 -->
+	<filter>
+	  <filter-name>EncodingFilter</filter-name>
+	  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	  <init-param>
+	    <param-name>encoding</param-name>
+	    <param-value>UTF-8</param-value>
+	  </init-param>
+	  <init-param> 
+           <param-name>forceEncoding</param-name> 
+           <param-value>true</param-value> 
+        </init-param> 
+	</filter>
+	 
+	<!-- 필터 맵핑 /* 는 모든 경로의 파일을 말함 -->
+	<filter-mapping>
+	  <filter-name>EncodingFilter</filter-name>
+	  <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	
+	<!-- 공용 에러 페이지 (주로 사용되는 응답 코드만 정리)
+		4xx: 클라이언트의 요청 오류
+		5xx: 서버의 응답 오류
+		
+		HTTP Status Codes : https://httpstatuses.com/
+	-->
+	 
+	<!-- 400: 잘못된 요청 -->
+	<error-page>
+        <error-code>400</error-code>
+        <location>/error400</location> <!-- /WEB-INF/views/error/400.jsp -->
+    </error-page>
+    
+	<!-- 404: Not Found -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error404</location> <!-- /WEB-INF/views/error/404.jsp -->
+    </error-page>
+    
+	<!-- 500: 내부 서버 오류 -->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error500</location> <!-- /WEB-INF/views/error/500.jsp -->
+    </error-page>
+</web-app>

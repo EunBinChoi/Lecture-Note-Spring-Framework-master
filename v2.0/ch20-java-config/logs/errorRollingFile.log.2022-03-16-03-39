@@ -1,0 +1,2 @@
+2022-03-16 03:38:04,694 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error404 raised me.spring.error.exception.NotFoundException: exception
+2022-03-16 03:38:13,940 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error404 raised me.spring.error.exception.NotFoundException: exception

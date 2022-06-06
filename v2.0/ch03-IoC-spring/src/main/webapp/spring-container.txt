@@ -1,0 +1,11 @@
+[ 스프링 컨테이너 정의 ]
+
+1) ApplicationContext extends BeanFactory (* 주로)
+	: 객체 생성하는 시점이 pre-loading
+	  pre-loading: 미리 객체를 생성
+	: 자주 사용하는 빈
+
+2) BeanFactory
+	: 객체 생성하는 시점이 lazy-loading
+	  lazy-loading: 객체가 필요한 순간에 생성 
+	: 자주 사용하지 않는 빈

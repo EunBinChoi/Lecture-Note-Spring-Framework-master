@@ -1,0 +1,8 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on 화 8월 31 01:11:59 2021
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+SQL*Loader-500: Unable to open file ("./ziodoro.ctl")
+SQL*Loader-554: error opening file
+SQL*Loader-509: System error: 장치가 명령을 인식하지 않습니다.

@@ -1,0 +1,12 @@
+2022-03-11 14:37:05,554 ERROR: me.spring.log1.LoggerTest1 - error
+2022-03-11 14:37:05,558 WARN : me.spring.log1.LoggerTest1 - warn
+2022-03-11 14:37:05,559 INFO : me.spring.log1.LoggerTest1 - info
+2022-03-11 14:37:05,559 DEBUG: me.spring.log1.LoggerTest1 - debug
+2022-03-11 14:37:30,984 ERROR: me.spring.log1.business.LoggerTest2 - error
+2022-03-11 14:37:30,987 WARN : me.spring.log1.business.LoggerTest2 - warn
+2022-03-11 14:37:30,987 INFO : me.spring.log1.business.LoggerTest2 - info
+2022-03-11 14:37:30,987 DEBUG: me.spring.log1.business.LoggerTest2 - debug
+2022-03-11 14:39:51,361 ERROR: me.spring.log1.business.LoggerTest2 - error
+2022-03-11 14:39:51,366 WARN : me.spring.log1.business.LoggerTest2 - warn
+2022-03-11 14:39:51,366 INFO : me.spring.log1.business.LoggerTest2 - info
+2022-03-11 14:39:51,366 DEBUG: me.spring.log1.business.LoggerTest2 - debug

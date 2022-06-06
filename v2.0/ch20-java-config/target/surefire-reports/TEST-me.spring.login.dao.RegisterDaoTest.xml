@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="5" failures="0" name="me.spring.login.dao.RegisterDaoTest" time="0.912" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.vm.version" value="11.0.13+10-LTS-370"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.13\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="J:\GoottAcademy-2\spring-workspace\ch20-java-config"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://openjdk.java.net/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="KR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="J:\GoottAcademy-2\spring-workspace\ch20-java-config"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="11.0.13+10-LTS-370"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Eunbin\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="J:\GoottAcademy-2\spring-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf10100646479394415586.tmp"/>
+    <property name="sun.jnu.encoding" value="MS949"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-11.0.13\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\WINDOWS\system32;C:\opencv\build\x64\vc15\bin;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Git\cmd;C:\Program Files\Apache Software Foundation\Tomcat 8.5\bin;C:\Program Files\Java\jdk-11.0.13\bin;C:\Users\Eunbin\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\Eunbin\AppData\Local\Programs\Python\Python39\;C:\Users\Eunbin\AppData\Local\Programs\Enthought\edm\;C:\Users\Eunbin\Anaconda3;C:\Users\Eunbin\Anaconda3\Library\mingw-w64\bin;C:\Users\Eunbin\Anaconda3\Library\usr\bin;C:\Users\Eunbin\Anaconda3\Library\bin;C:\Users\Eunbin\Anaconda3\Scripts;C:\Users\Eunbin\Anaconda2;C:\Users\Eunbin\Anaconda2\Scripts;C:\Users\Eunbin\Anaconda2\Library\bin;C:\Users\Eunbin\AppData\Local\Microsoft\WindowsApps;C:\Users\Eunbin\AppData\Local\atom\bin;C:\Program Files\Git\cmd;C:\ninja;C:\Program Files\Docker\Docker;C:\Program Files\Bandizip\;C:\Program Files (x86)\ffmpeg-20191120-7ead0da-win64-static\bin;C:\Users\Eunbin\AppData\Local\GitHubDesktop\bin;C:\Users\Eunbin\AppData\Local\Microsoft\WindowsApps;C:\Users\Eunbin\AppData\Local\Programs\Microsoft VS Code\bin;;."/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="55.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Eunbin"/>
+    <property name="user.timezone" value="Asia/Seoul"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="user.name" value="Eunbin"/>
+    <property name="java.class.path" value="C:\Users\Eunbin\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_1.18.0.20210618-2246\jars\plexus-classworlds-2.6.0.jar"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B install"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-11.0.13"/>
+    <property name="user.language" value="ko"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="11.0.13"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="J:\GoottAcademy-2\spring-workspace\ch20-java-config\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2021-10-19"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="java.vendor.version" value="18.9"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="me.spring.login.dao.RegisterDaoTest" name="selectTest" time="0.661"/>
+  <testcase classname="me.spring.login.dao.RegisterDaoTest" name="updateTest" time="0.005"/>
+  <testcase classname="me.spring.login.dao.RegisterDaoTest" name="selectAllTest" time="0.201"/>
+  <testcase classname="me.spring.login.dao.RegisterDaoTest" name="insertTest" time="0.04"/>
+  <testcase classname="me.spring.login.dao.RegisterDaoTest" name="deleteTest" time="0.005"/>
+</testsuite>

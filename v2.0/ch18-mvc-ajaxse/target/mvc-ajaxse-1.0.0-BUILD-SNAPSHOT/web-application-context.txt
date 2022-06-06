@@ -1,0 +1,27 @@
+[ Web Application Context ] 
+https://jaehun2841.github.io/2018/10/21/2018-10-21-spring-context/#%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0
+
+Spring에서 Appliction Context는 두 개의 계층이 존재
+Root WebApplicationContext (부모) -> Servlet WebApplicationContext (자식)
+
+
+1) Root WebApplicationContext (root-context.xml을 읽을 때 AppConfig.class, applicationContext.xml 파일을 읽음)
+	- 최상단에 위치한 Context
+	- ContextLoaderListener에 의해 만들어짐
+	- 서비스 계층이나 DAO를 포함한 웹 환경에 독립적인 빈들을 담아둠
+	- 서로 다른 Servlet Context에서 공유해야하는 빈들을 등록해놓고 사용할 수 있음
+	- Web Application 전체에 사용가능한 DB 연결, 로깅 기능들이 이용
+	- @Service, @Repository, DataSource 등
+
+2) Servlet WebApplicationContext (servlet-context.xml)
+	- 해당 서블릿에서만 이용되는 Context
+	- DispatcherServlet은 독자적인 WebApplicationContext를 가지고 있고 모두 동일한 Root WebApplicationContext 공유
+	- DispatcherServlet이 직접 사용하는 컨트롤러를 포함한 웹 관련 빈들을 등록하는 데 사용됨
+	- 보통 URL 설정이 있는 Bean들을 생성 
+	- @Controller, Interceptor, ViewResolver, MappingHandler 등
+	
+
+* 빈 찾는 방법
+	- 1) Servlet WebApplicationContext에서 빈을 찾음
+	- 2) 만약 없다면 Web Application Context에서 빈을 찾음
+		

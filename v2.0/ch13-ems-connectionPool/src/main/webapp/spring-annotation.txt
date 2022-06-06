@@ -1,0 +1,123 @@
+[ 스프링 어노테이션 (annotation) ]
+
+@Configuration: 클래스 레벨, 
+				스프링 IoC 컨테이너에게 해당 클래스가 자바 빈 등록하는 클래스임을 알림
+@Bean: 메소드 레벨, 해당 함수에서 리턴되는 객체를 빈으로 등록
+@Scope: 메소드 레벨, 빈의 scope 지정 (singleton, prototype)
+
+=================================================================
+자바 빈 (...beans, Entity, DTO, VO), 
+스프링 빈 (Spring Stereo Type) (Controller, Service, Dao)
+
+@Component: 클래스 레벨, Entity, DTO, VO (자바 빈)
+@Controller: 클래스 레벨, 스프링 MVC 컨트롤러
+@Service: 클래스 레벨, 스프링 MVC 서비스 == @Component
+@Repository: 클래스 레벨, 스프링 MV Dao == @Component
+			(*) DataAccessException 처리 (try-catch나 throws 문법 필요 없음)
+			
+=================================================================
+의존 객체 자동 주입 (생성자, setter, 필드)
+
+@Autowired: (생성자, setter, 필드) 주입하려고 하는 객체의 데이터 타입 (StudentDao) (스프링 자체 주석), required 속성 지원
+	(*) 동일한 데이터 타입이 여러개 있는 경우 문제가 생김!
+	(1) @Autowired의 필드 이름이나 생성자 이름으로 찾음
+	(2) @Qulifier를 통해 해당 빈에 유일한 이름 제공 (추가로 구분할 수 있는 수단)
+	(3) @Primary를 통해 우선 순위 지정 (@Primary가 붙은 빈을 먼저 제공)
+	(4) @Order(정수값)이 높은 순서대로 제공
+	
+	타입 -> 이름 -> @Qualifier -> 실패
+
+@Resource:  (setter, 필드) 주입하려고 하는 객체의 이름 (studentDao)
+	이름 -> 타입 -> @Qualifier -> 실패
+
+
+@Inject == @Autowired (자바 주석), required 속성 지원 X
+	타입 ->  @Qualifier -> 이름 -> 실패
+
+(*)
+@Autowired가 어디에 붙는지에 따라 객체 생성 순서가 다름
+(1) 생성자 (** 권장)
+ - A (service) <- B (dao)를 주입하려고 할 때 B의 생성자를 호출해서 빈을 찾거나 빈 팩토리에 등록
+ - 그 이후에 A를 찾거나 빈 팩토리에 등록
+
+(2) setter, 필드
+ - A (service) <- B (dao)를 주입하려고 할 때 A의 생성자를 호출해서 빈을 찾거나 빈 팩토리에 등록
+ - 그 이후에 B를 찾거나 빈 팩토리에 등록
+
+(**) 생성자를 통한 객체 자동 주입의 장점
+(1) 코드의 나쁜 냄새 줄일 수 있음
+
+@Service
+public class A {
+	@Autowired
+	public B b;
+	@Autowired
+	public C c;
+	@Autowired
+	public D d;
+}
+
+@Service
+public class A {
+	public B b;
+	public C c;
+	public D d;
+	
+	@Autowired
+	public A(B b, C c, D d) {
+		this.b = b;
+		this.c = c;
+		this.d = d;
+	}
+}
+
+(2) 불변성 (immutable)
+필드나 setter로 주입을 하게 되면 
+Service <- Dao
+Service 객체를 먼저 생성하고 Dao 객체가 생성되기 때문에 해당 Dao 객체가 변경될 수 있음
+
+생성자로 주입을 하게 되면
+Service <- Dao
+Dao 객체를 먼저 생성하고 Service 객체가 생성되기 때문에 해당 Dao 객체는 변경되지 않음
+(해당 필드를 final로 설정할 수 있음)
+
+
+(3) 순환 참조를 막을 수 있음
+public class AService {
+	@Autowired // 기본 생성자 필요
+	public BService bService;	
+	
+	
+	/////////////////////////////
+	public AService() {}
+	
+	@Autowired
+	public AService(BService bService) {
+		this.bService = bService;
+	}
+	public aFunc() {
+		bService.bFunc();
+	}	
+}
+
+public class BService {
+	@Autowired // 기본 생성자 필요
+	public AService aService;
+	
+	////////////////////////////////
+	public BService() {}
+	
+	@Autowired
+	public BService(AService aService) {
+		this.aService = aService;
+	}
+	public bFunc() {
+		aService.aFunc();
+	}	
+}
+
+
+
+
+
+

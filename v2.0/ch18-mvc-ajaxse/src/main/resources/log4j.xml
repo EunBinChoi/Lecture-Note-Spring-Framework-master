@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<!-- ConsoleAppender 로거 -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.err" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p: %C - %m%n" />
+		</layout>
+	</appender>
+	
+	
+	<!-- FileAppender 로거 -->
+	<appender name="file" class="org.apache.log4j.FileAppender">
+		<param name="File" value="/logs/file.log" />
+		<param name="ImmediateFlush" value="true"  />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p: %C - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- DailyRollingFileAppender 로거 -->
+	<appender name="errorRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/logs/errorRollingFile.log" />
+		<param name="Append" value="true" />
+ 		<param name="ImmediateFlush" value="true"  />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<!-- 교체 주기 지정, 교체한 파일 이름 지정 
+			- '.'yyyy-MM: 매달의 첫날에 로그파일을 교체함
+			- '.'yyyy-ww: 매주의 첫날에 로그파일을 교체함
+			- '.'yyyy-MM-dd: 매일 자정에 로그파일을 교체함
+			- '.'yyyy-MM-dd-a: 매일 자정과 정오에 로그파일을 교체함
+			- '.'yyyy-MM-dd-HH: 시간마다 (시간이 시작할때) 로그파일을 교체함
+			- '.'yyyy-MM-dd-HH-mm: 분마다 (분이 시작할때) 로그파일을 교체함
+		-->
+		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p: %C - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- DailyRollingFileAppender 로거 -->
+	<appender name="ajaxseServiceRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/logs/ajaxseServiceRollingFile.log" />
+		<param name="Append" value="true" />
+ 		<param name="ImmediateFlush" value="true"  />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<!-- 교체 주기 지정, 교체한 파일 이름 지정 
+			- '.'yyyy-MM: 매달의 첫날에 로그파일을 교체함
+			- '.'yyyy-ww: 매주의 첫날에 로그파일을 교체함
+			- '.'yyyy-MM-dd: 매일 자정에 로그파일을 교체함
+			- '.'yyyy-MM-dd-a: 매일 자정과 정오에 로그파일을 교체함
+			- '.'yyyy-MM-dd-HH: 시간마다 (시간이 시작할때) 로그파일을 교체함
+			- '.'yyyy-MM-dd-HH-mm: 분마다 (분이 시작할때) 로그파일을 교체함
+		-->
+		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p: %C - %m%n" />
+		</layout>
+	</appender>
+	
+	
+	
+	<!-- Application Logger (지역 변수) -->
+	<!-- 로그 메시지가 두 번 출력됨
+		Application Logger <- Root Logger 
+		Application Logger는 Root Logger의 logger 객체를 상속받기 때문에
+		
+		만약 상속받은 객체를 무시하고 싶으면 additivity="false" (기본값 true)
+	-->
+	
+	<logger name="me.spring.error" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="errorRollingFile" />
+	</logger>
+	
+	<logger name="me.spring.ajaxse" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="ajaxseServiceRollingFile" />
+	</logger>
+	
+	
+	<!-- Root Logger (전역 변수) -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>

@@ -1,0 +1,2 @@
+2022-03-16 05:34:44,367 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error500 raised me.spring.error.exception.InternalServerException: exception
+2022-03-16 05:34:45,982 ERROR: me.spring.error.controller.ExceptionHandlingController - Request: http://localhost:8000/mvc-login/error500 raised me.spring.error.exception.InternalServerException: exception

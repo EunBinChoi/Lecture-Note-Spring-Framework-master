@@ -1,0 +1,22 @@
+[ 스프링 프로젝트 로딩 순서 ]
+
+컨텍스트 (context): 프로젝트 실행되는 환경
+
+컨텍스트를 구성하기 위해 다음의 환경설정 파일 읽음
+1) web.xml
+	- ContextLoaderListener
+
+2) root-context.xml
+	- Root WebApplicationContext
+	- 여러개의 DispatcherServlet에서 공유 가능
+	- 보통 Dao (select, selectAll, insert, delete, modify)
+
+3) servlet-context.xml
+	- Servlet WebApplicationContext (DispatcherServlet)
+	- Controller, ViewResolver, HandlerMapping
+	
+4) new ctx 
+
+5) 빈 등록 > 의존관계 트리 형성 > 빈 생성
+
+6) ctx.close() 

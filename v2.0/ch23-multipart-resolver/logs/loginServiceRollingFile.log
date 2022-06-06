@@ -1,0 +1,6 @@
+2022-03-16 03:44:24,377 ERROR: me.spring.login.controller.registerController - Request: http://localhost:8000/mvc-login/doLogin raised java.lang.NullPointerException
+2022-03-16 03:44:27,550 ERROR: me.spring.login.controller.registerController - Request: http://localhost:8000/mvc-login/doLogin raised java.lang.NullPointerException
+2022-03-16 03:44:36,498 ERROR: me.spring.login.controller.registerController - Request: http://localhost:8000/mvc-login/doLogin raised java.lang.NullPointerException
+2022-03-16 03:44:47,553 ERROR: me.spring.login.controller.registerController - Request: http://localhost:8000/mvc-login/doSignup raised org.springframework.dao.DuplicateKeyException: PreparedStatementCallback; SQL [insert into register values (?, ?, ?, ?, ?)]; ORA-00001: unique constraint (SCOTT.register_PK) violated
+; nested exception is java.sql.SQLIntegrityConstraintViolationException: ORA-00001: unique constraint (SCOTT.register_PK) violated
+
